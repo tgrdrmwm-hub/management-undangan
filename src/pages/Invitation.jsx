@@ -153,66 +153,71 @@ const Invitation = () => {
   const goldBorder = '#CEB172';
 
   /* ════════════════════════════════
-     COVER SCREEN - JAVANESE
+     COVER SCREEN - JAVANESE (REDESIGNED)
      ════════════════════════════════ */
   if (!isOpen) {
     return (
       <div className={`min-h-screen relative overflow-hidden flex flex-col items-center justify-center ${isClosing ? 'animate-envelope-open' : ''}`}
-        style={{ background: `radial-gradient(at center right, ${cream} 0%, #E8D5C4 100%)` }}>
+        style={{ backgroundColor: '#e9e3d5' }}>
         
-        {/* Background photo */}
+        {/* Background Landscape Photo (Placeholder) */}
         <div className="absolute inset-0 z-0">
-          <img src={invitation.photoUrl || 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80'}
-            alt="Cover" className="w-full h-full object-cover opacity-20" />
-          <div className="absolute inset-0" style={{ backgroundColor: cream, opacity: 0.75 }} />
+          <img src="https://images.unsplash.com/photo-1596404558778-5743b59df04a?auto=format&fit=crop&w=1200&q=80"
+            alt="Landscape" className="w-full h-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#e9e3d5] via-transparent to-transparent opacity-80" />
         </div>
 
-        <BorderFrame color={ruby} />
-
-        {/* Flower ornaments */}
-        <div className="absolute top-0 left-0 opacity-30 pointer-events-none z-10 trj-flower-sway">
-          <FlowerOrnament />
-        </div>
-        <div className="absolute bottom-0 right-0 opacity-30 pointer-events-none z-10 trj-flower-sway trj-flower-sway--alt">
-          <FlowerOrnament flip />
+        {/* Framing Trees */}
+        <div className="absolute inset-0 z-10 pointer-events-none flex justify-between">
+          <img src="/tree_frame.png" alt="Tree Left" className="h-[120%] -ml-16 sm:-ml-32 object-cover object-left opacity-90 trj-flower-sway mix-blend-multiply" />
+          <img src="/tree_frame.png" alt="Tree Right" className="h-[120%] -mr-16 sm:-mr-32 object-cover object-left scale-x-[-1] opacity-90 trj-flower-sway trj-flower-sway--alt mix-blend-multiply" />
         </div>
 
-        <div className="relative z-20 text-center px-4 sm:px-6 max-w-md w-full">
+        {/* Flying Swallow Bird */}
+        <div className="absolute top-10 right-1/4 z-20 pointer-events-none animate-bird-fly mix-blend-multiply opacity-80">
+          <img src="/bird_swallow.png" alt="Swallow" className="w-24 sm:w-32" />
+        </div>
+
+        {/* Text Content */}
+        <div className="relative z-30 text-center px-4 sm:px-6 max-w-md w-full -mt-20">
           {/* Label */}
-          <p className="text-xs uppercase tracking-[0.35em] mb-4 animate-fade-in-down" style={{ color: ruby, fontFamily: 'Playfair Display, serif' }}>
-            The Wedding Of
+          <p className="text-xs uppercase tracking-[0.2em] mb-4 animate-fade-in-down" style={{ color: '#505a4e', fontFamily: 'Inter, sans-serif' }}>
+            UNDANGAN PERNIKAHAN
           </p>
 
           {/* Names */}
-          <div className="flex items-center justify-center gap-2 sm:gap-3 animate-fade-in-up">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl uppercase" style={{ color: ruby, fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
+          <div className="flex items-center justify-center gap-3 animate-fade-in-up">
+            <h1 className="text-5xl sm:text-7xl" style={{ color: '#413c32', fontFamily: 'Playfair Display, serif' }}>
               {invitation.groomName}
             </h1>
-            <span className="text-4xl sm:text-5xl md:text-6xl" style={{ color: ruby, fontFamily: 'Playfair Display, serif' }}>&</span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl uppercase" style={{ color: ruby, fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
+            <span className="text-4xl sm:text-6xl" style={{ color: '#413c32', fontFamily: 'Playfair Display, serif' }}>&</span>
+            <h1 className="text-5xl sm:text-7xl" style={{ color: '#413c32', fontFamily: 'Playfair Display, serif' }}>
               {invitation.brideName}
             </h1>
           </div>
 
           {/* Date */}
-          <p className="text-xs uppercase tracking-[0.2em] mt-4 animate-fade-in-up stagger-2" style={{ color: ruby, fontFamily: 'Playfair Display, serif' }}>
+          <p className="text-sm mt-4 animate-fade-in-up stagger-2" style={{ color: '#505a4e', fontFamily: 'Inter, sans-serif' }}>
             {formattedDate}
           </p>
 
           {/* Guest card */}
-          <div className="mt-8 sm:mt-10 animate-fade-in-up stagger-3">
-            <p className="text-xs tracking-widest mb-1" style={{ color: olive }}>Kepada Yth.</p>
-            <p className="text-2xl sm:text-3xl font-bold mb-5" style={{ color: ruby, fontFamily: 'Playfair Display, serif' }}>{guestName}</p>
+          <div className="mt-12 sm:mt-16 animate-fade-in-up stagger-3">
+            <p className="text-sm mb-1" style={{ color: '#505a4e' }}>Kepada Yth.</p>
+            <p className="text-sm mb-4" style={{ color: '#505a4e' }}>Bapak/Ibu/Saudara/i:</p>
+            <p className="text-2xl sm:text-3xl font-bold mb-6" style={{ color: '#413c32', fontFamily: 'Playfair Display, serif' }}>{guestName}</p>
+            
             <button onClick={handleOpen}
-              className="px-8 py-3.5 rounded-full font-semibold text-white uppercase text-sm tracking-wider transition-all hover:opacity-90 shadow-lg"
-              style={{ backgroundColor: ruby, fontFamily: 'Playfair Display, serif' }}>
-              Buka Undangan
+              className="px-8 py-3 rounded-full font-semibold text-white uppercase text-xs tracking-widest transition-all hover:scale-105 shadow-md"
+              style={{ backgroundColor: '#574c40', fontFamily: 'Inter, sans-serif' }}>
+              BUKA UNDANGAN
             </button>
           </div>
         </div>
 
-        <div className="absolute bottom-6 left-1/2 animate-bounce-down z-20">
-          <ChevronDown size={24} style={{ color: ruby }} className="opacity-50" />
+        {/* Joglo Roof Ornament at Bottom */}
+        <div className="absolute -bottom-10 sm:-bottom-16 left-1/2 -translate-x-1/2 z-20 pointer-events-none mix-blend-multiply opacity-90">
+          <img src="/joglo_roof.png" alt="Joglo Roof" className="w-[300px] sm:w-[450px]" />
         </div>
       </div>
     );
@@ -518,8 +523,21 @@ const GenericThemedInvitation = ({ invitation, guestName, t, countdown, isOpen, 
   return (
     <div ref={containerRef} className="min-h-screen font-sans">
       <audio ref={audioRef} loop><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" /></audio>
-      {petals.map((p) => (
-        <div key={p.id} className={`petal petal-${p.variant}`} style={{ left: p.left, animationDelay: p.delay, top: '-20px' }}>
+      
+      {/* Decorative Corner Flowers */}
+      <div className="fixed top-0 left-0 opacity-40 pointer-events-none z-10 trj-flower-sway" style={{ animationDuration: '6s' }}>
+        <FlowerOrnament />
+      </div>
+      <div className="fixed top-0 right-0 opacity-40 pointer-events-none z-10 trj-flower-sway trj-flower-sway--alt" style={{ animationDuration: '7s' }}>
+        <FlowerOrnament flip />
+      </div>
+
+      {/* Floating Petals - Increased count and spread */}
+      {Array.from({ length: 25 }, (_, i) => ({
+        id: i, left: `${Math.random() * 100}%`, delay: `${Math.random() * 15}s`,
+        size: 10 + Math.random() * 16, variant: (i % 3) + 1, opacity: 0.2 + Math.random() * 0.5,
+      })).map((p) => (
+        <div key={p.id} className={`petal petal-${p.variant}`} style={{ left: p.left, animationDelay: p.delay, top: '-30px' }}>
           <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill="none">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
               fill={t.petalColor.replace('%%OPACITY%%', String(p.opacity))} />

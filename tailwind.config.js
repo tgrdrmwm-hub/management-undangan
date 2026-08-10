@@ -7,17 +7,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        wedding: {
-          dark: '#1a1a2e',
-          gold: '#d4af37',
-          light: '#f9f9f9',
-          pink: '#f8c8dc'
+        luxury: {
+          dark: '#111213',    
+          grey: '#5A5D64',
+          silver: '#C4C7CC',
+          smoke: '#F2F3F5',
+          white: '#FFFFFF',
+          accent: '#000000',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
-        handwriting: ['Great Vibes', 'cursive']
+        sans: ['Cabinet Grotesk', 'sans-serif'], 
+        serif: ['Playfair Display', 'serif']
       }
     },
   },
