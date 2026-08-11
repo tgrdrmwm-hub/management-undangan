@@ -82,7 +82,7 @@ const CreateInvitation = () => {
             <h3 className="text-base sm:text-lg font-medium text-gray-900 border-b border-gray-100 pb-2 mb-4">Pilih Tema Undangan</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {allThemes.map((theme) => {
-                const colors = themePreviewColors[theme.id];
+                const colors = theme.previewColors || themePreviewColors[theme.id] || { bg: '#e5e7eb', accent: '#374151', light: '#9ca3af' };
                 const isSelected = formData.theme === theme.id;
                 return (
                   <button

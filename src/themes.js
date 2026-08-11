@@ -443,7 +443,21 @@ const themes = {
   },
 };
 
-export const getTheme = (themeId) => themes[themeId] || themes.elegantGold;
-export const getAllThemes = () => Object.values(themes);
+export const getAllThemes = () => {
+  const staticThemes = Object.values(themes);
+  try {
+    const saved = localStorage.getItem('uploaded_themes');
+    const uploadedThemes = saved ? JSON.parse(saved) : [];
+    return [...staticThemes, ...uploadedThemes];
+  } catch (error) {
+    console.error("Error loading uploaded themes:", error);
+    return staticThemes;
+  }
+};
+
+export const getTheme = (themeId) => {
+  const all = getAllThemes();
+  return all.find(t => t.id === themeId) || themes.elegantGold;
+};
 export default themes;
 

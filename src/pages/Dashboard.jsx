@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { PlusCircle, Search } from 'lucide-react';
+import { PlusCircle, Search, UploadCloud } from 'lucide-react';
 import InvitationCard from '../components/InvitationCard';
 
 const Dashboard = () => {
@@ -13,6 +13,42 @@ const Dashboard = () => {
       setInvitations(JSON.parse(saved));
     }
   }, []);
+
+  const fileInputRef = useRef(null);
+
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const json = JSON.parse(event.target.result);
+        if (!json.id || !json.name || !json.cover) {
+          alert("Format file tema tidak valid. Harus memiliki id, name, dan cover.");
+          return;
+        }
+
+        const saved = localStorage.getItem('uploaded_themes');
+        const uploadedThemes = saved ? JSON.parse(saved) : [];
+        
+        const existingIndex = uploadedThemes.findIndex(t => t.id === json.id);
+        if (existingIndex >= 0) {
+          uploadedThemes[existingIndex] = json;
+        } else {
+          uploadedThemes.push(json);
+        }
+
+        localStorage.setItem('uploaded_themes', JSON.stringify(uploadedThemes));
+        alert(`Tema "${json.name}" berhasil diupload dan disimpan!`);
+      } catch (error) {
+        console.error(error);
+        alert("Gagal membaca file JSON.");
+      }
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    };
+    reader.readAsText(file);
+  };
 
   const handleDelete = (id) => {
     if (window.confirm('Apakah Anda yakin ingin menghapus undangan ini?')) {
@@ -35,13 +71,29 @@ const Dashboard = () => {
           <h1 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900">Dashboard</h1>
           <p className="text-sm sm:text-base text-gray-500 mt-1">Kelola semua undangan digital klien Anda.</p>
         </div>
-        <Link 
-          to="/dashboard/create" 
-          className="inline-flex items-center justify-center px-4 py-2.5 bg-wedding-gold text-white rounded-lg hover:bg-yellow-600 transition-colors shadow-sm text-sm sm:text-base w-full sm:w-auto"
-        >
-          <PlusCircle size={20} className="mr-2" />
-          Buat Undangan Baru
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <input 
+            type="file" 
+            accept=".json" 
+            ref={fileInputRef} 
+            onChange={handleFileUpload} 
+            className="hidden" 
+          />
+          <button 
+            onClick={() => fileInputRef.current?.click()}
+            className="inline-flex items-center justify-center px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors shadow-sm text-sm sm:text-base w-full sm:w-auto"
+          >
+            <UploadCloud size={20} className="mr-2" />
+            Upload Tema (.json)
+          </button>
+          <Link 
+            to="/dashboard/create" 
+            className="inline-flex items-center justify-center px-4 py-2.5 bg-wedding-gold text-white rounded-lg hover:bg-yellow-600 transition-colors shadow-sm text-sm sm:text-base w-full sm:w-auto"
+          >
+            <PlusCircle size={20} className="mr-2" />
+            Buat Undangan Baru
+          </Link>
+        </div>
       </div>
 
       {/* Search */}

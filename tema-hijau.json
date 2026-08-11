@@ -1,0 +1,77 @@
+{
+  "id": "emeraldForest",
+  "name": "🌲 Emerald Forest",
+  "preview": "Tema segar dengan warna hijau emerald",
+  "previewColors": {
+    "bg": "#022c22",
+    "accent": "#10b981",
+    "light": "#a7f3d0"
+  },
+  "cover": {
+    "bg": "bg-[#022c22]",
+    "overlay": "bg-gradient-to-b from-[#022c22]/70 via-[#022c22]/50 to-[#022c22]/90",
+    "labelColor": "text-[#10b981]/80",
+    "nameColor": "text-white",
+    "accentColor": "text-[#10b981]",
+    "guestBg": "bg-white/5 border-[#10b981]/20",
+    "guestLabel": "text-gray-300",
+    "guestName": "text-white",
+    "btnBg": "bg-[#10b981] hover:bg-[#059669] text-white",
+    "btnGlow": "shadow-[0_0_30px_rgba(16,185,129,0.3)]",
+    "cornerBorder": "border-[#10b981]/30",
+    "dateColor": "text-gray-300"
+  },
+  "hero": {
+    "overlayGradient": "from-[#ecfdf5] via-[#022c22]/30 to-[#022c22]/70",
+    "labelColor": "text-white/80",
+    "nameGradient": "from-[#059669] via-[#34d399] to-[#059669]",
+    "ampersandColor": "text-[#10b981]",
+    "dateColor": "text-white/70"
+  },
+  "countdown": {
+    "bg": "bg-[#022c22]",
+    "glowColor": "bg-[#10b981]/10",
+    "labelSmall": "text-[#10b981]",
+    "title": "text-white",
+    "cardBg": "bg-white/10 border-[#10b981]/20",
+    "valueColor": "text-[#10b981]",
+    "unitColor": "text-gray-300"
+  },
+  "story": {
+    "bg": "bg-[#ecfdf5]",
+    "quoteColor": "text-[#059669]/50",
+    "textColor": "text-[#064e3b]"
+  },
+  "event": {
+    "bg": "bg-[#022c22]",
+    "labelSmall": "text-[#10b981]",
+    "title": "text-white",
+    "cardBg": "bg-white/5 border-[#10b981]/15 hover:bg-white/10",
+    "iconBg": "bg-[#10b981]/15",
+    "iconColor": "text-[#10b981]",
+    "headingColor": "text-white",
+    "textColor": "text-gray-300",
+    "accentColor": "text-[#10b981]",
+    "btnBg": "bg-[#10b981] text-white hover:bg-[#059669]",
+    "mapBorder": "border-[#10b981]/15"
+  },
+  "gallery": {
+    "bg": "bg-[#ecfdf5]",
+    "labelSmall": "text-[#059669]",
+    "title": "text-[#022c22]"
+  },
+  "closing": {
+    "bg": "bg-[#022c22]",
+    "overlayBg": "bg-[#022c22]/80",
+    "heartColor": "text-[#10b981]",
+    "title": "text-white",
+    "textColor": "text-gray-300",
+    "nameGradient": "from-[#059669] via-[#34d399] to-[#059669]"
+  },
+  "musicBtn": "bg-[#10b981] hover:bg-[#059669] text-white shadow-[0_0_20px_rgba(16,185,129,0.3)]",
+  "dividerColor": "from-transparent via-[#10b981] to-transparent",
+  "heartFill": "#10b981",
+  "petalColor": "rgba(16, 185, 129, %%OPACITY%%)",
+  "footerBg": "bg-[#022c22] border-[#10b981]/10",
+  "footerText": "text-gray-500"
+}
