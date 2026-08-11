@@ -1,5 +1,5 @@
 @import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,10 +8,54 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   body {
-    background-color: theme('colors.luxury.smoke');
-    color: theme('colors.luxury.dark');
-    @apply font-sans overflow-x-hidden;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    overflow-x: hidden;
+    background-color: #ECEAE6;
+    color: #0C0A09;
+    transition: background-color 0.5s cubic-bezier(0.32,0.72,0,1),
+                color 0.5s cubic-bezier(0.32,0.72,0,1);
   }
+  .dark body {
+    background-color: #050403;
+    color: #F5F5F3;
+  }
+
+  ::selection {
+    background-color: rgba(198,169,105,0.2);
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #A8A29E; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #78716C; }
+  .dark ::-webkit-scrollbar-thumb { background: #44403C; }
+  .dark ::-webkit-scrollbar-thumb:hover { background: #57534E; }
+}
+
+/* Theme Transition Animations */
+.theme-transition-dark body, .theme-transition-light body { transition: none !important; }
+
+.theme-transition-dark::view-transition-old(root),
+.theme-transition-dark::view-transition-new(root),
+.theme-transition-light::view-transition-old(root),
+.theme-transition-light::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
+.theme-transition-dark::view-transition-old(root),
+.theme-transition-light::view-transition-old(root) { z-index: 1; }
+
+.theme-transition-dark::view-transition-new(root) { z-index: 2; animation: wipe-left-to-right 0.8s cubic-bezier(0.85, 0, 0.15, 1) forwards; }
+.theme-transition-light::view-transition-new(root) { z-index: 2; animation: wipe-right-to-left 0.8s cubic-bezier(0.85, 0, 0.15, 1) forwards; }
+
+@keyframes wipe-left-to-right { 
+  from { clip-path: inset(0 100% 0 0); } 
+  to { clip-path: inset(0 0 0 0); } 
+}
+
+@keyframes wipe-right-to-left { 
+  from { clip-path: inset(0 0 0 100%); } 
+  to { clip-path: inset(0 0 0 0); } 
 }

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { PlusCircle, Search, UploadCloud } from 'lucide-react';
+import { PlusCircle, Search, UploadCloud, Sparkles } from 'lucide-react';
 import InvitationCard from '../components/InvitationCard';
 
 const Dashboard = () => {
   const [invitations, setInvitations] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('invitations');
@@ -64,13 +65,26 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 animate-fade-in-up">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 animate-fade-in-up">
+      
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-14 gap-6">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900">Dashboard</h1>
-          <p className="text-sm sm:text-base text-gray-500 mt-1">Kelola semua undangan digital klien Anda.</p>
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-gold/10 dark:bg-accent-gold/10 dark:ring-1 dark:ring-accent-gold/15 mb-4">
+            <Sparkles size={11} className="text-accent-gold" />
+            <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-accent-gold">
+              Panel Administrasi
+            </span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-surface-900 dark:text-white tracking-tight text-balance">
+            Dashboard
+          </h1>
+          <p className="text-sm text-surface-400 dark:text-surface-500 mt-2 max-w-md">
+            Kelola semua undangan digital klien Anda dari satu tempat.
+          </p>
         </div>
+        
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <input 
             type="file" 
@@ -81,61 +95,113 @@ const Dashboard = () => {
           />
           <button 
             onClick={() => fileInputRef.current?.click()}
-            className="inline-flex items-center justify-center px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors shadow-sm text-sm sm:text-base w-full sm:w-auto"
+            className="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full
+              bg-surface-200 dark:bg-accent-gold/10
+              text-surface-600 dark:text-accent-gold
+              hover:bg-surface-300 dark:hover:bg-accent-gold/20
+              ring-1 ring-surface-300 dark:ring-accent-gold/15
+              dark:hover:shadow-[0_0_25px_-6px_rgba(198,169,105,0.15)]
+              transition-all duration-500 ease-premium active:scale-[0.97]
+              text-[13px] font-medium tracking-wide w-full sm:w-auto"
           >
-            <UploadCloud size={20} className="mr-2" />
-            Upload Tema (.json)
+            <UploadCloud size={16} strokeWidth={1.8} className="group-hover:-translate-y-0.5 transition-transform duration-500 ease-premium" />
+            Upload Tema
           </button>
           <Link 
             to="/dashboard/create" 
-            className="inline-flex items-center justify-center px-4 py-2.5 bg-wedding-gold text-white rounded-lg hover:bg-yellow-600 transition-colors shadow-sm text-sm sm:text-base w-full sm:w-auto"
+            className="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full
+              bg-surface-900 dark:bg-accent-gold
+              text-white dark:text-surface-900
+              hover:bg-surface-700 dark:hover:bg-accent-amber
+              shadow-soft hover:shadow-lifted dark:shadow-glow-gold dark:hover:shadow-[0_0_40px_-8px_rgba(198,169,105,0.35)]
+              transition-all duration-500 ease-premium active:scale-[0.97]
+              text-[13px] font-medium tracking-wide w-full sm:w-auto"
           >
-            <PlusCircle size={20} className="mr-2" />
+            <PlusCircle size={16} strokeWidth={1.8} />
             Buat Undangan Baru
+            {/* trailing icon pill */}
+            <span className="ml-1 w-6 h-6 rounded-full bg-white/10 dark:bg-surface-900/10 flex items-center justify-center
+              group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105
+              transition-transform duration-500 ease-premium">
+              <span className="text-xs">→</span>
+            </span>
           </Link>
         </div>
       </div>
 
-      {/* Search */}
-      <div className="bg-white p-3 sm:p-4 rounded-xl shadow-sm border border-gray-100 mb-6 sm:mb-8">
-        <div className="relative w-full sm:max-w-md">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search className="h-5 w-5 text-gray-400" />
+      {/* Search — double bezel */}
+      <div className={`rounded-2xl p-1 mb-10 sm:mb-14
+        transition-all duration-700 ease-premium
+        ${isSearchFocused 
+          ? 'bg-accent-gold/10 ring-1 ring-accent-gold/30 shadow-glow-gold' 
+          : 'bg-surface-300/40 dark:bg-accent-gold/[0.03] ring-1 ring-surface-300 dark:ring-accent-gold/10'
+        }`}
+      >
+        <div className="relative rounded-[calc(1rem-4px)] overflow-hidden bg-white dark:bg-surface-900">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <Search className={`h-4 w-4 transition-colors duration-500 ${isSearchFocused ? 'text-accent-gold' : 'text-surface-300 dark:text-surface-600'}`} strokeWidth={2} />
           </div>
           <input
             type="text"
             placeholder="Cari nama mempelai..."
-            className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-wedding-gold focus:border-wedding-gold outline-none transition-colors text-sm sm:text-base"
+            className="pl-11 w-full px-4 py-3.5 
+              bg-transparent
+              text-surface-900 dark:text-white 
+              placeholder-surface-300 dark:placeholder-surface-600
+              text-[14px]
+              focus:outline-none
+              transition-colors duration-300"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onFocus={() => setIsSearchFocused(true)}
+            onBlur={() => setIsSearchFocused(false)}
           />
         </div>
       </div>
 
       {/* Content */}
       {filteredInvitations.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-          {filteredInvitations.map(invitation => (
-            <InvitationCard 
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {filteredInvitations.map((invitation, i) => (
+            <div 
               key={invitation.id} 
-              invitation={invitation} 
-              onDelete={handleDelete} 
-            />
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              <InvitationCard 
+                invitation={invitation} 
+                onDelete={handleDelete} 
+              />
+            </div>
           ))}
         </div>
       ) : (
-        <div className="text-center py-12 sm:py-20 bg-white rounded-xl border border-gray-100 border-dashed px-4">
-          <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gray-50 mb-4">
-            <Search className="h-6 w-6 sm:h-8 sm:w-8 text-gray-400" />
+        /* Empty state — double bezel */
+        <div className="rounded-3xl p-1.5 bg-surface-300/30 dark:bg-accent-gold/[0.03] ring-1 ring-surface-300 dark:ring-accent-gold/10">
+          <div className="rounded-[calc(1.5rem-6px)] bg-white dark:bg-surface-900 py-20 sm:py-28 px-6 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-surface-50 dark:bg-surface-800 mb-6">
+              <Sparkles className="h-7 w-7 text-accent-gold" strokeWidth={1.5} />
+            </div>
+            <h3 className="text-lg font-serif font-semibold text-surface-900 dark:text-white mb-2 tracking-tight">
+              Belum ada undangan
+            </h3>
+            <p className="text-sm text-surface-400 dark:text-surface-500 mb-8 max-w-sm mx-auto">
+              Buat undangan pertama untuk klien Anda dan mulai menerima tamu secara digital.
+            </p>
+            <Link 
+              to="/dashboard/create" 
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full
+                bg-surface-900 dark:bg-accent-gold
+                text-white dark:text-surface-900
+                text-[13px] font-medium tracking-wide
+                hover:bg-surface-700 dark:hover:bg-accent-amber
+                shadow-soft hover:shadow-lifted dark:shadow-glow-gold
+                transition-all duration-500 ease-premium active:scale-[0.97]"
+            >
+              <PlusCircle size={15} strokeWidth={1.8} />
+              Buat Sekarang
+            </Link>
           </div>
-          <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-1">Tidak ada undangan ditemukan</h3>
-          <p className="text-sm sm:text-base text-gray-500 mb-6">Mulai buat undangan pertama Anda untuk klien.</p>
-          <Link 
-            to="/dashboard/create" 
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-wedding-gold bg-wedding-gold/10 rounded-lg hover:bg-wedding-gold hover:text-white transition-colors"
-          >
-            Buat Sekarang
-          </Link>
         </div>
       )}
     </div>

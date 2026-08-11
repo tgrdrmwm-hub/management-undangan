@@ -10,11 +10,11 @@ const ProtectedRoute = () => {
   }
   
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-surface-200 dark:bg-surface-950 flex flex-col transition-colors duration-500 ease-premium">
       <Navbar />
-      <div className="flex-grow">
+      <main className="flex-grow">
         <Outlet />
-      </div>
+      </main>
     </div>
   );
 };

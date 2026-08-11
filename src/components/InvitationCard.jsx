@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ExternalLink, Copy, Trash2 } from 'lucide-react';
+import { ExternalLink, Copy, Trash2, Calendar } from 'lucide-react';
 
 const InvitationCard = ({ invitation, onDelete }) => {
   const { id, slug, brideName, groomName, date, photoUrl } = invitation;
@@ -12,52 +11,101 @@ const InvitationCard = ({ invitation, onDelete }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
-      {/* Image */}
-      <div className="h-36 sm:h-48 bg-gray-200 relative">
-        {photoUrl ? (
-          <img src={photoUrl} alt="Wedding" className="w-full h-full object-cover" />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-wedding-dark/10">
-            <span className="text-gray-400 text-sm">No Photo</span>
-          </div>
-        )}
-        <a
-          href={`/undangan/${slug}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute top-2 right-2 p-1.5 bg-white/90 rounded-full text-gray-700 hover:text-wedding-gold transition-colors shadow-sm"
-          title="Buka Undangan"
-        >
-          <ExternalLink size={16} />
-        </a>
-      </div>
-      
-      {/* Info */}
-      <div className="p-4 sm:p-5">
-        <h3 className="font-serif text-lg sm:text-xl font-bold text-gray-900 truncate">
-          {groomName} & {brideName}
-        </h3>
-        <p className="text-xs sm:text-sm text-gray-500 mt-1 mb-3 sm:mb-4">
-          {new Date(date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </p>
-        
-        {/* Actions */}
-        <div className="flex gap-2">
-          <button 
-            onClick={copyToClipboard}
-            className="flex-1 flex items-center justify-center px-3 py-2 text-xs sm:text-sm font-medium text-wedding-gold bg-wedding-gold/10 rounded-md hover:bg-wedding-gold hover:text-white transition-colors"
-          >
-            <Copy size={14} className="mr-1.5" />
-            Copy Link
-          </button>
+    /* Double-bezel outer shell */
+    <div className="group rounded-3xl p-1.5 
+      bg-surface-300/50 dark:bg-accent-gold/[0.04]
+      ring-1 ring-surface-300 dark:ring-accent-gold/10
+      hover:ring-accent-gold/40 dark:hover:ring-accent-gold/25
+      transition-all duration-700 ease-premium
+      hover:shadow-elevated dark:hover:shadow-[0_0_50px_-12px_rgba(198,169,105,0.2)]
+      hover:scale-[1.01] active:scale-[0.99]"
+    >
+      {/* Inner core */}
+      <div className="rounded-[calc(1.5rem-6px)] overflow-hidden
+        bg-white dark:bg-surface-900
+        shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]"
+      >
+        {/* Image */}
+        <div className="h-44 sm:h-52 relative overflow-hidden">
+          {photoUrl ? (
+            <img 
+              src={photoUrl} 
+              alt={`${groomName} & ${brideName}`} 
+              className="w-full h-full object-cover transition-transform duration-700 ease-premium group-hover:scale-105" 
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center 
+              bg-gradient-to-br from-surface-100 to-surface-200 
+              dark:from-surface-850 dark:to-surface-900 dark:bg-[radial-gradient(ellipse_at_center,rgba(198,169,105,0.06),transparent_70%)]"
+            >
+              <div className="text-center">
+                <span className="text-surface-300 dark:text-surface-600 font-serif text-2xl italic">No Photo</span>
+              </div>
+            </div>
+          )}
           
-          <button 
-            onClick={() => onDelete(id)}
-            className="flex items-center justify-center px-3 py-2 text-xs sm:text-sm font-medium text-red-600 bg-red-50 rounded-md hover:bg-red-600 hover:text-white transition-colors"
+          {/* Gradient overlay at bottom */}
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+          
+          {/* Open link button */}
+          <a
+            href={`/undangan/${slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute top-3 right-3 p-2 rounded-full 
+              bg-white/90 dark:bg-surface-800/80 dark:backdrop-blur-sm
+              text-surface-600 dark:text-accent-gold/70
+              hover:text-accent-gold dark:hover:text-accent-gold 
+              transition-all duration-500 ease-premium
+              opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0
+              shadow-soft dark:shadow-[0_0_15px_-4px_rgba(198,169,105,0.15)]
+              active:scale-95"
+            title="Buka Undangan"
           >
-            <Trash2 size={14} />
-          </button>
+            <ExternalLink size={14} strokeWidth={2} />
+          </a>
+        </div>
+        
+        {/* Info */}
+        <div className="p-5">
+          <h3 className="font-serif text-lg font-semibold text-surface-900 dark:text-white truncate tracking-tight">
+            {groomName} & {brideName}
+          </h3>
+          <div className="flex items-center gap-1.5 mt-1.5 mb-5">
+            <Calendar size={12} strokeWidth={1.8} className="text-surface-400 dark:text-accent-gold/40" />
+            <p className="text-xs text-surface-400 dark:text-surface-500 tracking-wide">
+              {new Date(date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+          </div>
+          
+          {/* Actions */}
+          <div className="flex gap-2">
+            <button 
+              onClick={copyToClipboard}
+              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full
+                text-xs font-medium tracking-wide
+                bg-surface-900 text-white 
+                dark:bg-accent-gold/15 dark:text-accent-gold dark:ring-1 dark:ring-accent-gold/20
+                hover:bg-surface-700 
+                dark:hover:bg-accent-gold/25 dark:hover:shadow-[0_0_20px_-6px_rgba(198,169,105,0.2)]
+                transition-all duration-500 ease-premium active:scale-[0.97]
+                shadow-soft"
+            >
+              <Copy size={13} strokeWidth={2} />
+              Copy Link
+            </button>
+            
+            <button 
+              onClick={() => onDelete(id)}
+              className="flex items-center justify-center p-2.5 rounded-full
+                text-surface-400 dark:text-surface-500
+                hover:text-red-500 dark:hover:text-red-400
+                hover:bg-red-50 dark:hover:bg-red-900/10
+                transition-all duration-500 ease-premium active:scale-[0.95]"
+            >
+              <Trash2 size={15} strokeWidth={1.8} />
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -459,7 +459,7 @@ const Invitation = () => {
       {/* ── FOOTER ── */}
       <footer className="py-6 text-center text-white" style={{ backgroundColor: ruby }}>
         <p className="text-xs sm:text-sm opacity-80">
-          Made with <Heart size={12} className="inline mx-1" fill="currentColor" /> by Eterna Invitation
+          Made with <Heart size={12} className="inline mx-1" fill="currentColor" /> by WD Group Company
         </p>
       </footer>
     </div>
@@ -662,7 +662,7 @@ const GenericThemedInvitation = ({ invitation, guestName, t, countdown, isOpen, 
       </section>
 
       <footer className={`py-6 sm:py-8 text-center border-t ${t.footerBg}`}>
-        <p className={`text-xs sm:text-sm ${t.footerText}`}>Made with <Heart size={12} className="inline text-red-400 mx-1" fill="currentColor" /> by Eterna Invitation</p>
+        <p className={`text-xs sm:text-sm ${t.footerText}`}>Made with <Heart size={12} className="inline text-red-400 mx-1" fill="currentColor" /> by WD Group Company</p>
       </footer>
     </div>
   );
