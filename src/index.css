@@ -1,61 +1,152 @@
-@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
   body {
-    font-family: 'Cabinet Grotesk', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
-    background-color: #ECEAE6;
-    color: #0C0A09;
-    transition: background-color 0.5s cubic-bezier(0.32,0.72,0,1),
-                color 0.5s cubic-bezier(0.32,0.72,0,1);
   }
-  .dark body {
-    background-color: #050403;
-    color: #F5F5F3;
-  }
-
-  ::selection {
-    background-color: rgba(198,169,105,0.2);
-  }
-
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #A8A29E; border-radius: 9999px; }
-  ::-webkit-scrollbar-thumb:hover { background: #78716C; }
-  .dark ::-webkit-scrollbar-thumb { background: #44403C; }
-  .dark ::-webkit-scrollbar-thumb:hover { background: #57534E; }
 }
 
-/* Theme Transition Animations */
-.theme-transition-dark body, .theme-transition-light body { transition: none !important; }
-
-.theme-transition-dark::view-transition-old(root),
-.theme-transition-dark::view-transition-new(root),
-.theme-transition-light::view-transition-old(root),
-.theme-transition-light::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
-
-.theme-transition-dark::view-transition-old(root),
-.theme-transition-light::view-transition-old(root) { z-index: 1; }
-
-.theme-transition-dark::view-transition-new(root) { z-index: 2; animation: wipe-left-to-right 0.8s cubic-bezier(0.85, 0, 0.15, 1) forwards; }
-.theme-transition-light::view-transition-new(root) { z-index: 2; animation: wipe-right-to-left 0.8s cubic-bezier(0.85, 0, 0.15, 1) forwards; }
-
-@keyframes wipe-left-to-right { 
-  from { clip-path: inset(0 100% 0 0); } 
-  to { clip-path: inset(0 0 0 0); } 
+.font-serif-luxury {
+  font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
-@keyframes wipe-right-to-left { 
-  from { clip-path: inset(0 0 0 100%); } 
-  to { clip-path: inset(0 0 0 0); } 
+.font-cinzel {
+  font-family: 'Cinzel', serif;
 }
+
+.font-script {
+  font-family: 'Alex Brush', cursive;
+}
+
+/* Custom dynamic theme variables & gradients */
+.theme-bg-page {
+  background-color: var(--theme-bg, #090a10);
+}
+
+.theme-card {
+  background-color: var(--theme-card-bg, #12141d);
+  border: 1px solid var(--theme-border, rgba(223, 180, 97, 0.25));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.theme-primary-text {
+  color: var(--theme-primary, #dfb461);
+}
+
+.theme-secondary-text {
+  color: var(--theme-secondary, #fce09c);
+}
+
+.theme-border-color {
+  border-color: var(--theme-border, rgba(223, 180, 97, 0.25));
+}
+
+.theme-glow-radial {
+  background: radial-gradient(circle, var(--theme-glow, rgba(212, 175, 55, 0.2)) 0%, rgba(12, 13, 18, 0) 70%);
+}
+
+.theme-btn-primary {
+  background: linear-gradient(135deg, var(--theme-secondary, #fce09c), var(--theme-primary, #dfb461));
+  color: #08080a;
+  font-weight: 600;
+  box-shadow: 0 4px 15px var(--theme-glow, rgba(212, 175, 55, 0.25));
+  transition: all 0.2s ease;
+}
+
+.theme-btn-primary:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 6px 20px var(--theme-glow, rgba(212, 175, 55, 0.35));
+}
+
+.theme-gradient-text {
+  background: linear-gradient(135deg, var(--theme-secondary, #fce09c) 0%, var(--theme-primary, #dfb461) 50%, var(--theme-secondary, #fce09c) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom golden gradient text and borders */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--theme-secondary, #fce09c) 0%, var(--theme-primary, #dfb461) 45%, var(--theme-secondary, #fce09c) 80%, var(--theme-primary, #f7d67b) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-gold-gradient {
+  border-image: linear-gradient(135deg, #e6c575, #997528, #f5df9a) 1;
+}
+
+.bg-gold-radial {
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(12, 13, 18, 0) 70%);
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(18, 20, 29, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(223, 180, 97, 0.18);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0d12;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2e3d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cba14d;
+}
+
+/* Animations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+

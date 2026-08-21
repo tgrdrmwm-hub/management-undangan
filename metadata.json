@@ -1,0 +1,6 @@
+{
+  "name": "The Wedding of Arya & Anindya",
+  "description": "Platform dan sistem manajemen undangan pernikahan digital interaktif dengan 24 tema palet warna eksklusif, 22+ struktur layout independen (Adat Nusantara, Imperial Luxury, Modern Editorial, Botanical, Celestial), generator link tamu WhatsApp blast, galeri, RSVP, dan amplop digital.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
