@@ -39,195 +39,15 @@ export const HOLY_QUOTE = {
   text: '"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."',
 };
 
-export const WEDDING_EVENTS: WeddingEvent[] = [
-  {
-    id: 'akad',
-    title: 'Akad Nikah',
-    subtitle: 'Momen Sakral Ikrar Suci',
-    dateString: 'Sabtu, 24 Oktober 2026',
-    timeRange: '08.00 - 10.00 WIB',
-    venueName: 'Grand Ballroom The Dharmawangsa Hotel',
-    address: 'Jl. Brawijaya Raya No. 26, Kebayoran Baru, Jakarta Selatan',
-    googleMapsUrl: 'https://maps.google.com/?q=The+Dharmawangsa+Jakarta',
-    calendarEventTitle: 'Akad Nikah Arya & Anindya',
-    dresscode: 'Formal / Tradisional Elegan',
-    dresscodeColors: [
-      { name: 'Sage Green', hex: '#6f8f72' },
-      { name: 'Champagne Gold', hex: '#d4af37' },
-      { name: 'Warm Cream', hex: '#f4ecd8' },
-    ],
-    isVirtualAvailable: true,
-    virtualStreamUrl: 'https://youtube.com/live',
-  },
-  {
-    id: 'resepsi',
-    title: 'Resepsi Pernikahan',
-    subtitle: 'Perayaan Cinta & Syukuran',
-    dateString: 'Sabtu, 24 Oktober 2026',
-    timeRange: '18.30 - 21.30 WIB',
-    venueName: 'Royal Glass House & Garden The Dharmawangsa',
-    address: 'Jl. Brawijaya Raya No. 26, Kebayoran Baru, Jakarta Selatan',
-    googleMapsUrl: 'https://maps.google.com/?q=The+Dharmawangsa+Jakarta',
-    calendarEventTitle: 'Resepsi Pernikahan Arya & Anindya',
-    dresscode: 'Black Tie / Evening Formal Batik & Kebaya Modern',
-    dresscodeColors: [
-      { name: 'Emerald Forest', hex: '#164e3b' },
-      { name: 'Midnight Navy', hex: '#1e293b' },
-      { name: 'Warm Gold', hex: '#e5b84c' },
-    ],
-    isVirtualAvailable: true,
-    virtualStreamUrl: 'https://youtube.com/live',
-  },
-];
+export const WEDDING_EVENTS: WeddingEvent[] = [];
 
-export const LOVE_STORY: LoveMilestone[] = [
-  {
-    year: '2021',
-    title: 'Pertemuan Pertama',
-    description: 'Takdir mempertemukan kami di sebuah workshop desain & teknologi di Bandung. Percakapan singkat tentang kopi dan arsitektur berlanjut menjadi obrolan hangat tanpa henti.',
-    icon: 'Sparkles',
-    photoUrl: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=80',
-  },
-  {
-    year: '2023',
-    title: 'Menjalin Komitmen',
-    description: 'Setelah melalui berbagai cerita, petualangan mendaki bersama, dan saling mendukung mimpi masing-masing, kami memutuskan untuk melangkah ke jenjang yang lebih serius.',
-    icon: 'HeartHandshake',
-    photoUrl: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=700&q=80',
-  },
-  {
-    year: '2025',
-    title: 'The Proposal under the Stars',
-    description: 'Di bawah hamparan bintang Danau Toba, Arya berlutut dan menanyakan satu pertanyaan yang disambut senyum bahagia dan air mata haru: "Will you marry me?" Dan jawabannya adalah "Yes!"',
-    icon: 'Gem',
-    photoUrl: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=700&q=80',
-  },
-  {
-    year: '2026',
-    title: 'Menuju Hari Bahagia',
-    description: 'Kini kami siap menyatukan dua hati dan keluarga dalam ikatan pernikahan yang suci. Memulai babak baru kehidupan bersama.',
-    icon: 'Infinity',
-    photoUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=80',
-  },
-];
+export const LOVE_STORY: LoveMilestone[] = [];
 
-export const GALLERY_PHOTOS: GalleryItem[] = [
-  {
-    id: 'gal-1',
-    title: 'Eternal Elegance',
-    category: 'studio',
-    imageUrl: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Dalam tatapan penuh ketulusan, kami menemukan rumah satu sama lain.',
-    aspect: 'portrait',
-  },
-  {
-    id: 'gal-2',
-    title: 'Sunset Whispers',
-    category: 'outdoor',
-    imageUrl: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Senja mengajarkan bahwa hal terindah adalah saat kita melangkah bersama.',
-    aspect: 'landscape',
-  },
-  {
-    id: 'gal-3',
-    title: 'Traditional Warmth',
-    category: 'traditional',
-    imageUrl: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Menghargai akar budaya yang mempertemukan restu keluarga.',
-    aspect: 'portrait',
-  },
-  {
-    id: 'gal-4',
-    title: 'Joyful Laughter',
-    category: 'candid',
-    imageUrl: 'https://images.unsplash.com/photo-1519225429875-585a97576579?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Tawa renyah yang selalu mencairkan segala lelah di penghujung hari.',
-    aspect: 'square',
-  },
-  {
-    id: 'gal-5',
-    title: 'Hand in Hand',
-    category: 'outdoor',
-    imageUrl: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Menggenggam erat tanganmu melewati setiap musim kehidupan.',
-    aspect: 'landscape',
-  },
-  {
-    id: 'gal-6',
-    title: 'The Promise Ring',
-    category: 'studio',
-    imageUrl: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Simbol janji setia yang terukir selamanya.',
-    aspect: 'portrait',
-  },
-];
+export const GALLERY_PHOTOS: GalleryItem[] = [];
 
-export const INITIAL_WISHES: GuestWish[] = [
-  {
-    id: 'wish-1',
-    name: 'Raditya & Vania',
-    status: 'Hadir',
-    message: 'Selamat ya Arya dan Anindya! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Lancar sampai hari H sahabatku! 🎉✨',
-    createdAt: '2 jam yang lalu',
-    likes: 12,
-    isLiked: false,
-    relation: 'Sahabat Kuliah',
-  },
-  {
-    id: 'wish-2',
-    name: 'Keluarga Bpk. H. Prasetyo',
-    status: 'Hadir',
-    message: 'Barakallahu lakuma wa baraka alaikuma wa jama\'a bainakuma fii khoir. Doa terbaik dari kami sekeluarga untuk kedua mempelai.',
-    createdAt: '5 jam yang lalu',
-    likes: 8,
-    isLiked: true,
-    relation: 'Keluarga',
-  },
-  {
-    id: 'wish-3',
-    name: 'Dinda Maharani & Suami',
-    status: 'Hadir',
-    message: 'Aaaa terharu banget melihat perjalanan kalian dari awal! Cantik dan ganteng banget, can\'t wait to celebrate with you guys! ❤️',
-    createdAt: '1 hari yang lalu',
-    likes: 19,
-    isLiked: false,
-    relation: 'Teman Kantor',
-  },
-  {
-    id: 'wish-4',
-    name: 'Rian Firmansyah',
-    status: 'Masih Ragu',
-    message: 'Selamat brother Arya! Sedang usahakan jadwal dinas agar bisa terbang ke Jakarta hadir di momen sakral ini. Sukses lancar!',
-    createdAt: '1 hari yang lalu',
-    likes: 4,
-    isLiked: false,
-    relation: 'Rekan Kerja',
-  },
-];
+export const INITIAL_WISHES: GuestWish[] = [];
 
-export const BANK_ACCOUNTS: BankAccount[] = [
-  {
-    id: 'bca',
-    bankName: 'BCA (Bank Central Asia)',
-    accountNumber: '8735091244',
-    accountHolder: 'ARYA PRATAMA',
-    logoType: 'bca',
-  },
-  {
-    id: 'mandiri',
-    bankName: 'Bank Mandiri',
-    accountNumber: '1370019284752',
-    accountHolder: 'ANINDYA LARASATI',
-    logoType: 'mandiri',
-  },
-  {
-    id: 'qris',
-    bankName: 'QRIS Digital Gift (Semua E-Wallet / Bank)',
-    accountNumber: 'NMID: ID1020039281729',
-    accountHolder: 'Arya & Anindya Wedding',
-    logoType: 'qris',
-  },
-];
+export const BANK_ACCOUNTS: BankAccount[] = [];
 
 export const GIFT_ADDRESS = {
   recipient: 'Arya Pratama & Anindya Larasati',
@@ -777,44 +597,9 @@ export const HOLY_QUOTE_PRESETS = [
   },
 ];
 
-export const DEFAULT_GUEST_LIST: GuestContact[] = [
-  { id: 'g-1', name: 'Bpk. Ridwan Kamil & Keluarga', phone: '081234567890', category: 'VIP', paxLimit: 2, isSent: true, sentAt: 'Kemarin' },
-  { id: 'g-2', name: 'Dr. Hendra Wijaya', phone: '081987654321', category: 'Keluarga', paxLimit: 3, isSent: true, sentAt: 'Hari ini' },
-  { id: 'g-3', name: 'Raditya Dika & Anissa', phone: '085712345678', category: 'Sahabat', paxLimit: 2, isSent: false },
-  { id: 'g-4', name: 'Keluarga Besar Bpk. Subroto', phone: '081399887766', category: 'Keluarga', paxLimit: 4, isSent: false },
-  { id: 'g-5', name: 'Tim Marketing PT Inovasi Maju', phone: '082122334455', category: 'Rekan Kerja', paxLimit: 5, isSent: false },
-  { id: 'g-6', name: 'Nadia Saphira & Partner', phone: '087811223344', category: 'Sahabat', paxLimit: 2, isSent: false },
-];
+export const DEFAULT_GUEST_LIST: GuestContact[] = [];
 
-export const DEFAULT_RSVPS: RsvpSubmission[] = [
-  {
-    guestName: 'Raditya & Vania',
-    phoneNumber: '081299887766',
-    attendance: 'Hadir',
-    paxCount: 2,
-    selectedEventId: 'resepsi',
-    notes: 'InsyaAllah hadir tepat waktu sebelum acara dimulai!',
-    submittedAt: '2026-10-10 14:32',
-  },
-  {
-    guestName: 'Keluarga Bpk. H. Prasetyo',
-    phoneNumber: '081122334455',
-    attendance: 'Hadir',
-    paxCount: 3,
-    selectedEventId: 'akad',
-    notes: 'Semoga berkah dan lancar selalu acaranya.',
-    submittedAt: '2026-10-11 09:15',
-  },
-  {
-    guestName: 'Rian Firmansyah',
-    phoneNumber: '081765432100',
-    attendance: 'Masih Ragu',
-    paxCount: 1,
-    selectedEventId: 'resepsi',
-    notes: 'Menyesuaikan jadwal dinas di luar kota.',
-    submittedAt: '2026-10-12 18:40',
-  },
-];
+export const DEFAULT_RSVPS: RsvpSubmission[] = [];
 
 export const DEFAULT_PROJECTS: WeddingProject[] = [
   {

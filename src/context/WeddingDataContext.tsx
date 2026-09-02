@@ -215,6 +215,10 @@ export const WeddingDataProvider: React.FC<{ children: React.ReactNode }> = ({ c
       return { success: false, error: 'Silakan masukkan alamat email yang valid.' };
     }
 
+    if (password !== 'admin123') {
+      return { success: false, error: 'Kombinasi email dan kata sandi salah.' };
+    }
+
     const userName = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' ');
     const formattedName = userName.charAt(0).toUpperCase() + userName.slice(1);
 

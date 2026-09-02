@@ -107,7 +107,7 @@ export default function AdminDashboard() {
             </div>
             <div>
               <h1 className="font-serif-luxury font-bold text-sm sm:text-base tracking-wide text-neutral-100 flex items-center gap-1.5">
-                <span>WeddingPro</span>
+                <span>WD Group</span>
                 <span className="text-[10px] px-2 py-0.5 rounded-full font-mono font-semibold bg-[#dfb461]/20 text-[#dfb461] border border-[#dfb461]/40 uppercase">
                   Studio
                 </span>
